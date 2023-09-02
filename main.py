@@ -56,3 +56,53 @@ def menu():
             break
         else:
             print("Opcao invalida! ")
+
+---------------------------------------------------------------------------------------------------
+from  tkinter import*
+from tkinter import messagebox
+
+def calcularImc() -> None:
+    peso = float(txt_peso.get())
+    altura = float(txt_altura.get())
+    imc = peso/ altura **2
+    messagebox.showinfo("Resultado!",f"Seu imc é:{imc:.2f}")
+    txt_peso.delete(0, END)
+    txt_altura.delete(0,END)
+
+
+janela = Tk()
+#como colocar um titulo na janela
+janela.title("Primeira janela")
+#como modificar o tamanho
+janela.geometry("350x300")
+
+label_peso = Label(janela,
+                   text="Peso: ",
+                   fg="red",
+                   font="Arial 14 bold")
+
+label_altura = Label(janela,
+                   text="Altura: ",
+                   fg="red",
+                   font="Arial 14 bold")
+
+txt_peso = Entry(janela, font="Arial 13")
+txt_altura = Entry(janela, font="Arial 13")
+
+btn_calcular = Button(janela, text="calcular", fg="blue", width=8,height=1,font="Arial 14 bold", bg="yellow",command=calcularImc)
+btn_calcular.grid(row=2, column=0)
+
+
+
+
+
+txt_peso.grid(row=0, column=1)
+txt_altura.grid(row=1, column=1)
+
+
+
+label_peso.grid(row=0, column=0)
+
+label_altura.grid(row=1, column=0)
+
+janela.mainloop()
